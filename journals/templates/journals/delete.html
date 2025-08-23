@@ -1,0 +1,9 @@
+{% block content %}
+<h1>Delete a Journal</h1>
+<p>{{ journal.topic }}</p>
+<p>{{ journal.body }}</p>
+<form method="post">
+  {% csrf_token %}
+  <button type="submit">Delete</button>
+</form>
+{% endblock content %}

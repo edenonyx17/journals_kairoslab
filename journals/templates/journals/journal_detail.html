@@ -1,0 +1,7 @@
+{% block content %}
+<h4>{{ journal.topic }}</h4>
+<p>{{ journal.body }}</p>
+<p>{{ journal.writer }}</p>
+<p>Create at: {{ journal.date_created | date:"D d M Y" }}</p>
+<p>Last updated at: {{ journal.date_updated | date:"D d M Y" }}</p>
+{% endblock content %}
