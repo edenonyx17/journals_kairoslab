@@ -4,7 +4,8 @@ from .views import (
   journalDetailView,
   journalCreateView,
   journalUpdateView,
-  journalDeleteView
+  journalDeleteView,
+  AboutPageView
 )
 
 
@@ -16,4 +17,5 @@ urlpatterns = [
     path('create/', journalCreateView.as_view(), name='create'),
     path('update/<int:pk>/', journalUpdateView.as_view(), name='update'),
     path('delete/<int:pk>/', journalDeleteView.as_view(), name='delete'),
+    path('about/', AboutPageView.as_view(), name='about'),
 ]

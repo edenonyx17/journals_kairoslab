@@ -1,6 +1,6 @@
 """Class Based Views"""
 
-from django.views.generic import ListView, DetailView
+from django.views.generic import ListView, DetailView, TemplateView
 from django.views.generic.edit import (
     CreateView,
     UpdateView,
@@ -50,3 +50,6 @@ class journalDeleteView(DeleteView):
 
     def get_context_data(self, **kwargs):
         return super().get_context_data(**kwargs)
+
+class AboutPageView(TemplateView):
+    template_name = 'journals/about.html'

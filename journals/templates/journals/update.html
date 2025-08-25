@@ -1,8 +1,30 @@
+{% extends 'journals/base.html' %}
+
+{% block page_header %}
+    <h1 class="text-center mb-4">All Journals</h1>
+{% endblock page_header %}
+
 {% block content %}
-<h1>Update a Journal</h1>
-<form method="post">
-  {% csrf_token %}
-  {{ form.as_p }}
-  <button type="submit">Update</button>
-</form>
+    {% if journals %}
+        <div class="row">
+            {% for journal in journals %}
+                <div class="col-md-4 mb-4">
+                    <div class="card shadow-sm">
+                        <div class="card-body">
+                            <h5 class="card-title">
+                                <a href="{% url 'journal-detail' journal.id %}">{{ journal.topic }}</a>
+                            </h5>
+                            <p class="card-text text-muted">{{ journal.body|truncatewords:30 }}</p>
+                            <p class="card-text"><small class="text-muted">Created: {{ journal.date_created|date:'D d M Y' }}</small></p>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        <div class="alert alert-info" role="alert">
+            <h4 class="alert-heading">No Journals Yet</h4>
+            <p>There are no journals yet. Create one to get started!</p>
+        </div>
+    {% endif %}
 {% endblock content %}

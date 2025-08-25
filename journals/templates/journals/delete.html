@@ -1,9 +1,18 @@
+{% extends 'journals/base.html' %}
+{% load django_bootstrap5 %}
+
+{% block page_header %}
+    <h1 class="text-center mb-4">Delete Journal</h1>
+{% endblock page_header %}
+
 {% block content %}
-<h1>Delete a Journal</h1>
-<p>{{ journal.topic }}</p>
-<p>{{ journal.body }}</p>
-<form method="post">
-  {% csrf_token %}
-  <button type="submit">Delete</button>
-</form>
+    <div class="alert alert-warning" role="alert">
+        <h4 class="alert-heading">Do you want to delete this Journal?</h4>
+        <p><strong>Topic:</strong> {{ journal.topic }}</p>
+        <p><strong>Body:</strong> {{ journal.body }}</p>
+        <form method="post">
+            {% csrf_token %}
+            {% bootstrap_button button_type="submit" content="Delete" %}
+        </form>
+    </div>
 {% endblock content %}
