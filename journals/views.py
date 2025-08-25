@@ -41,6 +41,7 @@ class journalUpdateView(LoginRequiredMixin, UpdateView):
     success_url = reverse_lazy('home')
 
     def form_valid(self, form):
+        form.instance.writer = self.request.user
         return super().form_valid(form)
 
 class journalDeleteView(DeleteView):
